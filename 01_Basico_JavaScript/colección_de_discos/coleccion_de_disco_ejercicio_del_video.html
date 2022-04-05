@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+
+    </style>
+    <title>My Title</title>
+</head>
+
+<body>
+
+    <main>
+
+    </main>
+
+    <script>
+        /*     PROBLEMA:
+        
+            Tenemos un objeto que representa  parte de una colecion de albunes
+            Cada albun tiene unnúmero de identificación único( id ) asociado a otras propiedades.
+        
+            Nota no todos los albunes tienen la información completa:
+        
+            Define una funcion actualizarDisco() que tome los siguintes parametros:
+            -disco( Los objetos que representan la collección de discos ).
+                - id
+                - propiedad
+                - valor
+            Tu meta es completar la función implementando las siguientes reglas par modificar el objeto pasodo por la funcion:
+        
+            -si el valor es una cadena vacia, elimina la propiedada del álbum correspondiente
+        
+            - si propiedad es igual ala  cadena de caracteres canciones pero el albun no tiene una propirdad llamada canciones, crea un arreglo vacio y agrega valor a ese  arreglo.
+                
+            - si propiedad es igual a la  cadena de caracteres canciones y valor no es una cadena vacia, agrega  valor al final del arreglo de canciones del albun correspondiente.
+        
+            si valor no es una cadena vacia y propiedad no es igual a canciones, asigna el valor del parámetro valor a la propiedad.
+        
+            si la propiedade no existe, debes crearla y asignar este valor.
+         */
+
+        /* === RESUELTA AL ESTILO DE ALEX */
+
+
+
+
+        /* 
+        * MANEJO DE CUTRO DATOS EN EL ARREGLO
+ 
+            1- NOMBRE DEL OBJETO (coleccionDeDiscos)
+            2- NUMERO UNICO DE IDENTIFICACION (7853, etc.)
+            3- PROPIEDADES DEL OBJETO (tituloDelAlbum ,etc.)
+            4- VALOR DE LAPROPIEDAD ("ABBA Gold,etc)
+ 
+         * CREO UN PERAMETRO POR CADA DATO EN LA FUNCION
+         * CON ESTOS PARAMEROS Y DATOS CREO LA FUNCION
+ 
+        */
+
+        var coleccionDeDiscos = {
+            7853: {
+                tituloDelAlbum: "Bee Gees Greatest",
+                artista: "Bee Gees",
+                canciones: ["Stayin Alive"]
+            },
+            5439: {
+                tituloDelAlbum: "ABBA Gold",
+               
+            }
+
+        }
+
+        function actualizarDisco( coleccion, id, propiedad, valor )
+        {
+
+            if ( valor === "" ) {
+                delete coleccion[id][propiedad];
+            }
+
+            else if ( propiedad === "canciones" ) {
+                coleccion[id][propiedad] = coleccion[id][propiedad] || [];
+                coleccion[id][propiedad].push( valor );
+
+            }
+            else {
+                coleccion[id][propiedad]=valor;
+            }
+        }
+        /* 
+                console.log( coleccionDeDiscos[7853].tituloDelAlbum );
+                actualizarDisco( coleccionDeDiscos, 7853, "tituloDelAlbum", "" );
+                console.log( coleccionDeDiscos[7853].tituloDelAlbum );
+         */
+
+        /*         console.log( coleccionDeDiscos[5439].canciones );
+                actualizarDisco( coleccionDeDiscos, 5439, "canciones", "Mama mia" );
+                console.log( coleccionDeDiscos[5439].canciones ); */
+
+
+        console.log( coleccionDeDiscos[5439].artista );
+        actualizarDisco( coleccionDeDiscos, 5439, "artista", "ABBA" );
+        console.log( coleccionDeDiscos[5439].artista );
+
+
+        /*👉
+                       function actualizarDisco( coleccion, id, propiedad, valor )
+                        {
+        
+                            if ( valor === "" ) {
+                                delete coleccion[id][propiedad];
+                            }
+                            ➡             else if ( propiedad === "canciones" && coleccion[id].canciones === undefined ) {
+                                            coleccion[id][propiedad] = [];
+                                            coleccion[id][propiedad].push( valor );
+                                        } ⬅
+        
+                            else if ( propiedad === "canciones" ) {
+                                coleccion[id][propiedad] = coleccion[id][propiedad] || [];
+                                coleccion[id][propiedad].push( valor );
+        
+                            }
+                            else {
+                                coleccion[id][propiedad] = valor;
+                            }
+        
+                            ➡
+                                console.log( coleccionDeDiscos[7853].tituloDelAlbum );
+                                actualizarDisco( coleccionDeDiscos, 7853, "tituloDelAlbum", "" );
+                                console.log( coleccionDeDiscos[7853].tituloDelAlbum );
+                         ⬅
+                        }
+                        console.log( coleccionDeDiscos[5439].canciones );
+                        actualizarDisco( coleccionDeDiscos, 5439, "canciones", "Mama mia" );
+                        console.log( coleccionDeDiscos[5439].canciones );
+        👈*/
+    </script>
+</body>
+
+</html>

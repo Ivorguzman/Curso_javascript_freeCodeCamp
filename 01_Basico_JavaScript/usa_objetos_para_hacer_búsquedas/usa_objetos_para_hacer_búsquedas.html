@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+
+    </style>
+    <title>usa_objetos_para_hacer_búsquedas</title>
+</head>
+
+<body>
+
+    <main>
+
+    </main>
+
+    <script>
+
+        /*         function alfabeto(val){
+                    switch ( val ) {
+                        case 1:
+                            alpha = "Z";
+                            break;
+                        case 2:
+                            alpha = "Y";
+                            break;
+                        case 3:
+                            alpha = "X";
+                            break;
+                        case 4:
+                            alpha = "W";
+                            break;
+                        case 24:
+                            alpha = "C";
+                            break;
+                        case 26:
+                            alpha = "A";
+                            break;
+                        default: alpha = "No se encuentra en dicionario";
+                    }
+                }
+                alfabeto(26)
+                console.log( alpha ) */
+
+
+        /*         var alpha = {
+                    1: "Z",
+                    2: "Y",
+                    3: "X",
+                    4: "W",
+                    24: "C",
+                    26: "A"
+                }
+                function alfabeto( obj, clave )
+                {
+        
+                    return obj[clave];
+        
+                }
+                letra = alfabeto( alpha, 26 );
+                console.log( letra ); */
+
+        /*         switch ( val ) {
+                        case "alpha":
+                            result = "Adams";
+                            break;
+                        case "bravo":
+                            result = "Boston";
+                            break;
+                        case "charlie":
+                            result = "Chicago";
+                            break;
+                        case "delta":
+                            result = "Denver";
+                            break;
+                        case "echo":
+                            result = "Easy";
+                            break;
+                        case "foxtrot":
+                            result = "Frank";
+                    }
+         */
+        /* ==== Solucion 1 ==== */
+        console.log();
+        console.log( ' ==== Solucion 1 ==== */' );
+        var lookup = {
+            "alpha": "Adams",
+            "bravo": "Boston",
+            "charlie": "Chicago",
+            "delta": "Denver",
+            "echo": "Easy",
+            "foxtrot": "Frank"
+        }
+
+        function phoneticLookup( val )
+        {
+            return lookup[val]
+        }
+
+        consulta = phoneticLookup( "foxtrot" );
+
+        console.log( consulta );
+
+        /* ==== Solucion 2 ==== */
+        console.log();
+        console.log( ' ==== Solucion 2 ==== */' );
+        var lookup = {
+            "alpha": "Adams",
+            "bravo": "Boston",
+            "charlie": "Chicago",
+            "delta": "Denver",
+            "echo": "Easy",
+            "foxtrot": "Frank"
+        }
+
+
+        function phoneticLookup( val )
+        {
+            var result = lookup[val];
+
+
+            return result;
+        }
+
+
+        console.log( phoneticLookup( "delta" ) );
+
+
+        /* ==== Solucion 3 ==== */
+        console.log();
+        console.log( ' ==== Solucion 3 ==== */' );
+
+        function phoneticLookup( val )
+        {
+            var result = "";
+
+            // Cambia solo el código debajo de esta línea
+            var lookup = {
+                "alpha": "Adams",
+                "bravo": "Boston",
+                "charlie": "Chicago",
+                "delta": "Denver",
+                "echo": "Easy",
+                "foxtrot": "Frank"
+            }
+            result = lookup[val];
+            // Cambia solo el código encima de esta línea
+            return result;
+        }
+
+
+        console.log( phoneticLookup( "echo" ) );
+    </script>
+</body>
+
+</html>

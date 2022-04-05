@@ -1,0 +1,19 @@
+{
+  "Name": "01_Convierte Celsius a Fahrenheit",
+  "UniqueId": "e59790ba-2179-4bd7-a790-4c4e720da357",
+  "Description": "My skill is amazing!",
+  "StartupRules": [
+    "Manual",
+    "Robot"
+  ],
+  "Language": "javascript",
+  "BroadcastMode": "verbose",
+  "TimeoutInSeconds": 600,
+  "CleanupOnCancel": true,
+  "WriteToLog": false,
+  "Parameters": {
+    "int": 10,
+    "double": 20.5,
+    "string": "twenty"
+  }
+}

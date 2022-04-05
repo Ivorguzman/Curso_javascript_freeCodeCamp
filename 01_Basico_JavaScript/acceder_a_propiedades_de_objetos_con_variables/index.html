@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+
+  </style>
+  <title>My Title</title>
+</head>
+
+<body>
+
+  <main>
+
+  </main>
+
+  <script>
+
+    /* === EJEMPLO 1 ==  */
+    console.log( ' /* === EJEMPLO 1 ==  */' );
+    var perros = {
+      compania: "Puder", lazarillo: "Retriver", casador: "Salsicha"
+    };
+
+    var miPerro = "lazarillo";
+    var myRaza = perros[miPerro];
+
+
+    console.log( perros[miPerro] );
+    console.log( perros["compania"] )
+
+
+    function main( x )
+    {
+      var raza = x;
+      mostarRaza( raza );
+    }
+    function mostarRaza( raza )
+    {
+      var tipoPerro = raza;
+      console.log( perros[tipoPerro] );
+    }
+    main( "lazarillo" );
+    console.log();
+
+
+
+    /* === EJEMPLO 2 ==  */
+    console.log( ' /* === EJEMPLO 2 ==  */' );
+    var someObj = {
+      propName: "John"
+    };
+
+    function propPrefix( str )
+    {
+      var s = "prop";
+      return s + str;
+    }
+    var someProp = propPrefix( "Name" );
+    console.log( someObj[someProp] );
+    console.log();
+
+
+
+    /* === SOLUCION 1 === */
+/*👉    console.log( '  ➡ === SOLUCION 1 === ⬅' );
+
+    var testObjt = {
+      12: "Namath",
+      16: "Montana",
+      19: "Unitas"
+    };
+
+    var playerNumber = 19;
+    var player = testObjt[playerNumber];
+
+    console.log( playerNumber );
+    console.log( player);
+
+     console.log( );👈*/
+
+  /* === SOLUCION 2 === */
+  console.log( '  /* === SOLUCION 2 === */' );
+
+        function jugador( x, y )
+        {
+          var playerNumber = x;
+          var player = y;
+          console.log( x  + "       Dentro de la funcion" );
+          console.log( y  + "    Dentro de la funcion" );
+          console.log();
+          
+          /* return playerNumber; */
+          return player;
+        }
+        var consulta = jugador(12,"Namath");
+        console.log( consulta + " Fuera de la funcion");
+    
+  </script>
+</body>
+
+</html>

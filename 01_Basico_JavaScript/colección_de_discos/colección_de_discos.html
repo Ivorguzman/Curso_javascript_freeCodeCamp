@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+
+    </style>
+    <title>Colección de discos</title>
+</head>
+
+<body>
+
+
+
+    <script>
+        var recordCollection = {
+            2548: {
+                albumTitle: 'Slippery When Wet',
+                artist: 'Bon Jovi',
+                tracks: ['Let It Rock', 'You Give Love a Bad Name']
+            },
+            2468: {
+                albumTitle: '1999',
+                artist: 'Prince',
+                tracks: ['1999', 'Little Red Corvette']
+            },
+            1245: {
+                artist: 'Robert Palmer',
+                tracks: []
+            },
+            5439: {
+                albumTitle: 'ABBA Gold'
+            }
+        }
+
+
+        // Cambia solo el código debajo de esta línea
+        function updateRecords( records, id, prop, value )
+        {
+             [records][id][prop].push( value);
+        }
+        console.log( recordCollection[5439].artist);
+        updateRecords( "recordCollection", 5439, "artist", "ABBA" );
+        console.log( recordCollection[5439].artist );
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /* function redondeo()
+        {
+            return Math.random() * 4;
+
+        }
+        function reondeoMenor()
+        {
+            return Math.floor( Math.random() * 4 )
+        }
+
+        console.log( "uno " + redondeo() );
+        console.log( "dos " + reondeoMenor() ); */
+    </script>
+</body>
+</html>
