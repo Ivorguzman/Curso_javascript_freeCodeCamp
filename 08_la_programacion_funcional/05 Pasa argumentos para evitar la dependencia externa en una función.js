@@ -49,6 +49,3 @@
 
 
 
-const newBookList = add(bookList, 'A Brief History of Time');
-const newerBookList = remove(bookList, 'On The Electrodynamics of Moving Bodies');
-const newestBookList = remove(add(bookList, 'A Brief History of Time'), 'On The Electrodynamics of Moving Bodies');
