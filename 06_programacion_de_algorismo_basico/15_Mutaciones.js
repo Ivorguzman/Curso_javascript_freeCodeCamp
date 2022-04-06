@@ -58,15 +58,16 @@
         let index_02 = arr[0].toLowerCase();
 
         let i = 0;
-        let l = index_01.length;
+        let l = index_01.length;// longitud de la cadena
 
         for (; i < l; i++) {
-            if (index_02.indexOf(index_01[i]) === -1) return false;
+            if (index_02.indexOf(index_01[i]) === -1) return false;// si no encuentra la letra en el indice i
         }
         return true;
     }
 
-    console.log(mutation(["hello", "neo"]));
+    console.log(mutation(["hello", "hey"]));
+
 }
 
 
@@ -82,28 +83,16 @@
 
 
     function mutation(arr) {
-        return arr[1]
-            .toLowerCase()
-            .split("")
-            .every((letter) => arr[0].toLowerCase().indexOf(letter) !== -1);
+        return arr[1]// seleccionamos el segundo elemento del arreglo
+            .toLowerCase()// convierte todo a minuscula
+            .split("")//convertimos el segundo elemento del arreglo en un arreglo
+            .every((letter) => arr[0].toLowerCase().indexOf(letter) !== -1);//every() devuelve true si todas las letras del segundo elemento del arreglo estan presentes en el primer elemento del arreglo
     }
 
-    mutation(["hello", "hey"]);
+    console.log(mutation(["hello", "hey"]));
 
-
-
-    /*👉
-function mutation(arr) {
-    return arr[1]
-        .toLowerCase()
-        .split("")
-        .every((letter) => arr[0].toLowerCase().indexOf(letter) !== -1);
-}
-
-mutation(["hello", "hey"]);
-
-👈*/
-
+    // Nota:
+    // El método every ejecuta la función callback dada una vez por cada elemento presente en el arreglo hasta encontrar uno que haga retornar un valor falso a callback ,every no modifica el arreglo sobre el cual es llamado.
 
 }
 
@@ -123,30 +112,19 @@ mutation(["hello", "hey"]);
     // Devuelve true si la cadena de caracteres en el primer elemento del arreglo contiene todas las letras de la cadena en el segundo elemento del arreglo.
 
 
-    function mutation([target, test], i = 0) {
-        target = target.toLowerCase();
-        test = test.toLowerCase();
-        return i >= test.length
+    function mutation([target, test], i = 0) {// i = 0 es para que no se repita el ciclo
+        target = target.toLowerCase();//convertimos todo a minusculas
+        test = test.toLowerCase();//convertimos todo a minusculas
+        return i >= test.length// si i es mayor o igual a la longitud de test
             ? true
-            : !target.includes(test[i])
-                ? false
-                : mutation([target, test], i + 1);
+            : !target.includes(test[i])// si no incluye la letra
+                ? false// devuelve false
+                : mutation([target, test], i + 1);// si no devuelve false, y se repite el ciclo
     }
 
 
 
-    /*👉
-        function mutation([target, test], i = 0) {
-            target = target.toLowerCase();
-            test = test.toLowerCase();
-            return i >= test.length
-                ? true
-                : !target.includes(test[i])
-                    ? false
-                    : mutation([target, test], i + 1);
-        }
-    
-    👈*/
+    console.log(mutation(["hello", "hey"]));
 
 
 }
@@ -180,7 +158,8 @@ mutation(["hello", "hey"]);
         return true;
     }
 
-    // console.log(mutation(["hello", "neo"]));
+    console.log(mutation(["hello", "hey"]));
+
 }
 
 
@@ -196,8 +175,8 @@ mutation(["hello", "hey"]);
 
 
     function mutation(arr) {
-        var re = new RegExp('[^' + arr[0] + ']', "i");
-        return !re.test(arr[1]);
+        var re = new RegExp('[^' + arr[0] + ']', "i");// crea una expresion regular que no contenga la primera palabra
+        return !re.test(arr[1]);// si no encuentra la palabra devuelve true
     }
 }
 
