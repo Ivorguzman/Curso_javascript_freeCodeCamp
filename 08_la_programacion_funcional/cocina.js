@@ -1,60 +1,36 @@
-/*👉 const productosConDescuentos = productos.map(({ precio }) => { //!  ==> Desarmar el parametro👈*/
+/*👉
+{
+    function sumAll(arr) {
+        let max = Math.max(...arr);
+        let min = Math.min(...arr);
 
-const productos = [
-    {
-        nombre: "Camiseta",
-        precio: 500
-    },
-    {
-        nombre: " Zapatillas",
-        precio: 2000
-    },
-    {
-        nombre: "Pantalón",
-        precio: 1000
+        return min === max ? min
+            : max + sumAll([min, max - 1]);
     }
-];
+    console.log(sumAll([4, 1]));
+    console.log(sumAll([1, 4]));
+}👈*/
 
-//   const productosConDescuentos = productos.map((producto) => {
-//           if (producto.precio < 1000)return producto;
+{
+    function sumAll(arr) {
+        let min = Math.min(...arr);
+        let max = Math.max(...arr);
+        console.log(min, max); //1 4, 1 3, 1 2, 1 1 ;
 
+        if (min === max) {
+            return min
+        }
+        else {
+            return max + sumAll([min, max - 1]);
+        }
 
-
-//           return {
-//               ...producto,
-//               precio: producto.precio * 0.10
-//           };
-
-
-//       });
-const productosConDescuentos = productos.map((producto) => {
-    if (producto.precio < 1000) return producto; //! nos sacamos de ensima el caso que no interesa (Retorno temprano)
-
-    // producto.precio = producto.precio * 0.9; //! ERROR: se modifica el array original
-
-    // return {
-    //     ...producto,
-    //     precio: producto.precio * 0.9,
-    // }
-
-
-    // return {
-    //     ...producto,
-    //     precio: producto.precio * 0.9,
-    // };
-
-
-    return {
-        ...producto,
-        precio: producto.precio * 0.9
-    };
-
-
-});
+    }
+    // console.log(sumAll([4, 1]));
+    console.log(sumAll([1, 4]));
+}
 
 
 
-        // console.log(productos);
-        // console.log(productosConDescuentos);
+
 
 

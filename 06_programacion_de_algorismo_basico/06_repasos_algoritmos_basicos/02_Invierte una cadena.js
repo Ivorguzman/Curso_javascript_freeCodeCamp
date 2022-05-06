@@ -32,6 +32,17 @@
     // console.log(reverseString("Greetings from Earth")); //  htraE morf sgniteerG.
 }
 
+{
+    //! solucion 2.1 utilizacion de lops metodos  split(), reverse() y join()
+
+    function reverseString(str) {
+        return str.split('').reverse().join('');
+    }
+    console.log(reverseString("hello")); //olleh
+}
+
+
+
 
 {
     //! solucion 3  bucle forEach() con metodo push()
@@ -109,7 +120,7 @@
 
 {
 
-    //! Utiliaacion de los metodos .keys() y .value() del objeto Object para iterar umn objeto con le bucle for (let... of...)
+    //! Utiliaacion de los metodos .keys() y .value() del objeto Object para iterar un objeto con le bucle for (let... of...)
 
     {
 

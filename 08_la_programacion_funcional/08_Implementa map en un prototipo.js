@@ -56,7 +56,8 @@
 
 
     /*👉const nuevo_array = array.MAP()👈*/
-    const nuevo_array = array.Map((items) => items * 2);
+    const nuevo_array2 = array.Map((items) => items * 2);
+    console.log(nuevo_array2)
 }
 
 
