@@ -36,7 +36,7 @@
         return factorizacion
 
     }
-    // console.log(sumAll([1, 4]));
+     console.log(sumAll([1, 4]));
 
 }
 
