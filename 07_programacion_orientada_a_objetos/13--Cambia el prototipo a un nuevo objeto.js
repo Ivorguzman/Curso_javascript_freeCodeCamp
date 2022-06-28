@@ -1,6 +1,8 @@
 {
     //*     Cambia el prototipo a un nuevo objeto
-
+    function Bird(name) {
+        this.name = name;
+    }
     // Hasta ahora, has estado agregando propiedades al prototype (prototipo) individualmente:
 
     Bird.prototype.numLegs = 2;
@@ -9,12 +11,25 @@
 
     Bird.prototype.eat = function () {
         console.log("nom nom nom");
-    }
+    };
 
     Bird.prototype.describe = function () {
         console.log("My name is " + this.name);
-    }
+    };
+}
+let cacatua = new Bird('poke');
+
+console.log(cacatua.numLegs);
+cacatua.eat();
+cacatua.describe();
+
+{
+
+
     // Una forma más eficiente es establecer el prototype a un nuevo objeto que ya contenga las propiedades. De esta forma, las propiedades son añadidas todas a la vez:
+    function Bird(name) {
+        this.name = name;
+    }
 
     Bird.prototype = {
         numLegs: 2,
@@ -25,8 +40,20 @@
             console.log("My name is " + this.name);
         }
     };
-}
 
+    let loro = new Bird('pepe');
+
+    console.log(loro.numLegs);
+    loro.eat();
+    loro.describe();
+
+
+    console.log("---------------------------------------");
+    
+    console.log(loro.constructor === Bird)
+    console.log(loro.constructor === Object);
+    console.log(loro instanceof Bird);
+}
 {
     // ===DESAFIO===
 
@@ -52,7 +79,7 @@
             console.log("My name is " + this.name);
         }
 
-    }
+    };
 }
 {
     // ===SOLUCION===
@@ -79,5 +106,5 @@
             console.log("My name is " + this.name);
         }
 
-    }
+    };
 }

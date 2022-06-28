@@ -19,13 +19,13 @@
     let ownProps = [];
 
     for (let property in duck) {
-        if (duck.hasOwnProperty(property)) {
-            ownProps.push(property);
+        if (duck.hasOwnProperty(property) && canary.hasOwnProperty(property)) {
+            ownProps.push(property)
         }
     }
 
     console.log(ownProps);
-    // La consola mostrará el valor ["name", "numLegs"].
+    // La consola mostrará el valor ["name", "numLegs"] ["name", "numLegs"].
 }
 
 {

@@ -9,31 +9,40 @@
 
     let flyMixin = function (obj) {
         obj.fly = function () {
-            console.log("Yo puedo Volar largas distancias");
-        }
+            console.log("Yo Puesdo volar");
+        };
+       
     };
 
-
-
-    // El flyMixin toma a cualquier objeto y le da el método fly.
-
     let bird = {
-        name: "Donald",
-        numLegs: 2
+        name: 'Donald soy un aguila',
+        numLengs: 'Tengo 2 patas'
     };
 
     let plane = {
-        model: "chp77",
-        numPassengers: 5
+        model: 'Avion modelo 777',
+        numPassengers: 'Puedo trasladar 524 pasajeros'
     };
 
     flyMixin(bird);
     flyMixin(plane);
 
+    console.log(bird.name);
+    console.log(bird.numLengs);
+    bird.fly();
+
+    console.log('----------------');
+
+    console.log(plane.model);
+    console.log(plane.numPassengers);
+    plane.fly();
+
+
+    // El flyMixin toma a cualquier objeto y le da el método fly.
+
+
     // Aquí bird y plane son pasados a flyMixin el cual después asigna la función fly a cada objeto. Ahora bird y plane pueden volar largas ditancias:
 
-    bird.fly();
-    plane.fly();
 
     // a consola mostraría la cadena Flying, wooosh! dos veces, una por cada llamada a .fly().
 
@@ -44,10 +53,10 @@
     //  === Desafio ===
 
     // Crea un mixin llamado glideMixin que defina un método llamado glide. Luego utiliza el glideMixin para dar a bird y boat la habilidad de planear.
-    
+
     let bird = {
         name: "Donald",
-        numLegs: 2
+        numLegs: 'Tengo 2 patas'
     };
 
     let boat = {
@@ -66,7 +75,7 @@
     // Crea un mixin llamado glideMixin que defina un método llamado glide. Luego utiliza el glideMixin para dar a bird y boat la habilidad de planear.
     let bird = {
         name: "Donald",
-        numLegs: 2
+        numLegs: 'Tengo 2 patas'
     };
 
     let boat = {
@@ -78,17 +87,24 @@
 
     let glideMixin = function (obj) {
         obj.glide = function () {
-            console.log("Puedo Planear")
-        }
-    }
+            console.log(' y planeo');
+        };
+
+    };
 
     glideMixin(bird);
     glideMixin(boat);
-
+    
+    console.log("--------------------");
+    console.log(bird.name);
+    console.log(bird.numLegs);
     bird.glide();
+    
+    console.log("--------------------");
+    console.log(boat.name);
+    console.log(boat.type);
     boat.glide();
 
-
-
-
+    bird.name = 'Pepe'
+    console.log(bird.name);
 }

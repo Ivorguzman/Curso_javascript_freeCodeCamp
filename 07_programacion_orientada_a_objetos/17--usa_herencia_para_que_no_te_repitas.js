@@ -7,6 +7,9 @@
     // Hay un principio en la programación llamado No te repitas(Do not Repeat Yourself DRY).La razón por la que el código repetido es un problema es porque cualquier tipo de cambio requiere corregir código en múltiples lugares.Esto suele significar más trabajo para los programadores y más espacio para errores.
 
     // Observa en el siguiente ejemplo como el método describe es compartido por Bird y Dog:
+    function Bird(name) {
+        this.name = name;
+    }
 
     Bird.prototype = {
         constructor: Bird,
@@ -14,13 +17,25 @@
             console.log("My name is " + this.name);
         }
     };
+    console.log("------------duck------------------");
+    let duck = Object.create(Animal.prototype);
+    console.log(duck);
 
+    
+    function Dog(name) {
+        this.name = name;
+    }
+    
     Dog.prototype = {
         constructor: Dog,
         describe: function () {
             console.log("My name is " + this.name);
         }
     };
+    console.log("------------beagle--------------");
+    let beagle = Object.create(Animal.prototype);
+    console.log(beagle);
+
     // El método describe se repite en dos lugares.El código se puede editar para seguir el principio DRY creando un supertype(o padre) llamado Animal:
 
     function Animal() { };
@@ -44,7 +59,7 @@
 
 
 {
-    // ===solucion===
+    // ===desafio=== 
 
     // El método eat se repite tanto en Cat como Bear. Edita el código utilizando el principio DRY, moviendo el método eat al supertype Animal.
 
@@ -78,7 +93,7 @@
     };
 }
 {
-    // ===desafio===
+    // ===solucion===
 
     // El método eat se repite tanto en Cat como Bear. Edita el código utilizando el principio DRY, moviendo el método eat al supertype Animal.
 

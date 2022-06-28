@@ -5,34 +5,32 @@
     // Entiende la propiedad constructor
 
     // Hay una propiedad especial constructor ubicada en instancias de objeto duck y beagle que fueron creados en desafíos anteriores:
-    function Dog(name) {
-        this.name = name;
-    }
-    Dog.prototype.numLegs = 4;
-
-
     function Bird(name) {
         this.name = name;
-        this.numLegs = 2;
-    }
+      };
+      function Dog(name) {
+        this.name = name;
+      }
+      
+      let duck = new Bird();
+      let beagle = new Dog();
+      
+      console.log(duck.constructor === Bird);
+      console.log(beagle.constructor === Dog);
+    //   Ambas llamadas console.log devolverían true en la consola.
 
-    let duck = new Bird();
-    let beagle = new Dog();
-
-    console.log(duck.constructor === Bird);
-    console.log(beagle.constructor === Dog);
-    // Ambas llamadas console.log devolverían true en la consola.
+      function joinBirdFraternity(candidate) {
+        if (candidate.constructor === Bird) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+      joinBirdFraternity()
 
     // Ten en cuenta que la propiedad constructor hace referencia a la función constructor que creo la instancia. La ventaja de la propiedad constructor es que es posible verificar esta propiedad para averiguar qué tipo de objeto es. Así es como se podría utilizar:
-
-    function joinBirdFraternity(candidate) {
-        if (candidate.constructor === Bird) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-    // Nota: dado que la propiedad constructor se puede sobreescribir (se verá en los próximos dos desafíos), por lo general, es mejor utilizar el método instanceof para verificar el tipo de un objeto.
+   
+    /// Nota: dado que la propiedad constructor se puede sobreescribir (se verá en los próximos dos desafíos), por lo general, es mejor utilizar el método instanceof para verificar el tipo de un objeto.
 
 
 
@@ -81,5 +79,19 @@
 
     }
     console.log(joinDogFraternity('Juan'));
+}
+
+
+
+
+
+{
+    function Bird(name) {
+        this.name = name;
+      }
+      
+      Bird.prototype.numLegs = 2;
+      
+      console.log(Object.keys(Bird));
 }
 

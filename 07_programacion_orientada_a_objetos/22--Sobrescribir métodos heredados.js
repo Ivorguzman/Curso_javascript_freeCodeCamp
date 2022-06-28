@@ -9,21 +9,32 @@
 
     // Es posible sobreescribir un método heredado. Se hace de la misma manera: agregando un método a ObjetoHijo.prototype usando el mismo nombre de método que el que se va a sobrescribir. Aquí hay un ejemplo de Bird sobrescribiendo el método eat() heredado de Animal:
 
-    function Animal() { }
-    Animal.prototype.eat = function () {
-        return "nom nom nom";
+    function Animal() { };
+
+    Animal.prototype = {
+        constructor: Bird,
+        eat: function () { return 'mon,mon,mon'; },
+        volar: function () { return 'Vuelo Poco pero vuelo'; },
+        numLegs: "tengo " + 4 + " Patas"
     };
-    function Bird() { }
+
+    function Bird() { };
 
     Bird.prototype = Object.create(Animal.prototype);
 
-    Bird.prototype.eat = function () {
-        return "peck peck peck";
-    };
+    let pavo = new Bird();
 
-    // 1. duck => ¿Está eat() definido aquí? No.(fue heredado)
-    // 2. Bird => ¿Está eat() definido aquí? => Sí. 
-    // 3. Animal => ¿Está eat() definido aquí? => Sí. 
+    console.log(pavo.eat());
+    console.log(pavo.volar());
+
+    console.log(pavo.numLegs);
+    console.log(pavo.constructor === Bird);
+
+    Bird.prototype.numLegs = "tengo " + 2 + " Patas";
+
+    console.log(pavo.numLegs);
+
+
 
 }
 
@@ -38,18 +49,18 @@
 
     function Bird() { }
 
-    Bird.prototype.fly = function() { return "I am flying!"; };
-    
+    Bird.prototype.fly = function () { return "I am flying!"; };
+
     function Penguin() { }
     Penguin.prototype = Object.create(Bird.prototype);
     Penguin.prototype.constructor = Penguin;
-    
+
     // Cambia solo el código debajo de esta línea
-    
-    
-    
+
+
+
     // Cambia solo el código encima de esta línea
-    
+
     let penguin = new Penguin();
     console.log(penguin.fly());
 }
@@ -76,9 +87,9 @@
 
     let penguin = new Penguin();
 
-    console.log(penguin.constructor)
+    console.log(penguin.constructor);
     Penguin.prototype.constructor = Penguin;
-    console.log(penguin.constructor)
+    console.log(penguin.constructor);
 
     console.log(penguin.fly());
 }

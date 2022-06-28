@@ -3,14 +3,74 @@
     // === Explicacion ===
 
     // Un patrón común en JavaScript es la ejecución de una función apenas declarada:
+/*👉    
+    let bird = {
+        name: "Donald",
+        numLegs: 'Tengo 2 patas'
+    };
 
-    (function () {
-        console.log("Chirp, chirp!");
-    })();
+    let boat = {
+        name: "Warrior",
+        type: "race-boat"
+    };
 
-    // Esta es una expresión de función anónima que se ejecuta de inmediato y produce Chirp, chirp! inmediatamente.
 
-    // Ten en cuenta que la función no tiene nombre y que no se almacena en un valor.Los dos paréntesis() al final de la expresión de la función hacen que se ejecute o invoque de forma inmediata.Este patrón se conoce como una expresión de función inmediatamente invocada o IIFE(por sus siglas en inglés).
+
+
+    function glideMixin(obj) {
+        obj.glide = function () {
+            console.log("Gliding on the water");
+        };
+    }
+
+    function flyMixin(obj) {
+        obj.fly = function () {
+            console.log("Flying, wooosh!");
+        };
+    }
+
+    glideMixin(bird);
+    glideMixin(boat);
+
+    flyMixin(bird);
+    flyMixin(boat);
+
+    console.log("--------------------");
+    console.log(bird.name);
+    console.log(bird.numLegs);
+    bird.glide();
+    bird.fly();
+
+    console.log("--------------------");
+    console.log(boat.name);
+    console.log(boat.type);
+    boat.glide();
+    boat.fly();
+
+    bird.name = 'Pepe';
+    console.log(bird.name);
+👈*/
+}
+
+{
+    console.log("------_ IIFE() _----");
+    
+    {
+        let motionModule = (function () {
+            return {
+                glideMixin: function (obj) {
+                    obj.glide = function () {
+                        console.log("Gliding on the water");
+                    };
+                },
+                flyMixin: function (obj) {
+                    obj.fly = function () {
+                        console.log("Flying, wooosh!");
+                    };
+                }
+            };
+        })();
+    }
 }
 
 
@@ -27,7 +87,7 @@
     let isCuteMixin = function (obj) {
         obj.isCute = function () {
             return true;
-        }
+        };
     };
 
     let singMixin = function (obj) {
@@ -43,23 +103,53 @@
     // === Solucion ===
 
     let funModule = (function () {
-        return {
-            isCuteMixin: function (obj) {
-                obj.isCute = function () {
-                    return true;
-                };
-            },
 
-            singMixin: function (obj) {
-                obj.sing = function () {
-                    return true;
-                }
-            }
+        let bird = {
+            name: "Donald",
+            numLegs: 'Tengo 2 patas'
+        };
+    
+        let boat = {
+            name: "Warrior",
+            type: "race-boat"
+        };
+    
+        function glideMixin(obj) {
+            obj.glide = function () {
+                console.log("Gliding on the water");
+            };
         }
+    
+        function flyMixin(obj) {
+            obj.fly = function () {
+                console.log("Flying, wooosh!");
+            };
+        }
+    
+        glideMixin(bird);
+        glideMixin(boat);
+    
+        flyMixin(bird);
+        flyMixin(boat);
+    
+        console.log("--------------------");
+        console.log(bird.name);
+        console.log(bird.numLegs);
+        bird.glide();
+        bird.fly();
+    
+        console.log("--------------------");
+        console.log(boat.name);
+        console.log(boat.type);
+        boat.glide();
+        boat.fly();
+    
+        bird.name = 'Pepe';
+        console.log(bird.name);
 
 
 
-    })()
+    })();
 }
 
 
