@@ -75,29 +75,23 @@
 
     //* Devuelve los números mayores en los arreglosa
     function largestOfFour(arr) {
-        let valorMayor = [];
+        let resultados = [];
         for (let i = 0; i < arr.length; i++) {
-          console.log(arr[i])
-          console.log("########")
-          for (let j = 0; j < arr[i].length; j++) {
-             console.log(arr[i][j]);
-            if (arr[i][j] > valorMayor) {
-              valorMayor.push(arr[j])
-              console.log(valorMayor)
-              console.log("______")
-              console.log("******")
-              console.log(i, j, arr[i][j])
+            let acumulado = arr[i][0];
+            for (let j = 0; j < arr[i].length; j++) {
+                let actual = arr[i][j];
+                if (actual > acumulado) {
+                    acumulado = arr[i][j];
+                }
             }
-          }
+            resultados.push(acumulado);
         }
-        console.log()
-        console.log()
-        console.log("°°°°°°°°°°°°")
-        console.log(valorMayor)
-      }
-      largestOfFour([[4, 5, 1, 3], [13, 27, 18, 26], [32, 35, 37, 39], [1000, 1001, 857, 1]]);
-    //* Código Explicación
+        return resultados;
+    }
+    // largestOfFour([[4, 5, 1, 3], [13, 27, 18, 26], [32, 35, 37, 39], [1000, 1001, 857, 1]]);
+    console.log(largestOfFour([[17, 23, 25, 12], [25, 7, 34, 48], [4, -10, 18, 21], [-72, -3, -17, -10, -2]]));
 
+    //* Código Explicación
     // Cree una variable para almacenar los resultados como una matriz.
     // Cree un bucle externo para iterar a través de la matriz externa.
     // Cree una segunda variable para contener el número más grande e inicialícela con el primer número. Esto debe estar fuera de un bucle interno, por lo que no se reasignará hasta que encontremos un número mayor.
@@ -114,21 +108,69 @@
     //! Solución funcional map () y Reduce ()
 
     {
-
+        // === Simplificada ===
         function largestOfFour(arr) {
-            return arr;
+            return arr.map(itemActual => itemActual.reduce((acumulado, actual) => acumulado > actual ? acumulado : actual));
         }
-
-        largestOfFour([[4, 5, 1, 3], [13, 27, 18, 26], [32, 35, 37, 39], [1000, 1001, 857, 1]]);
-
+        console.log(largestOfFour([[4, 5, 1, 3], [13, 27, 18, 26], [32, 35, 37, 39], [1000, 1001, 857, 1]]));
     }
 
-    //* Código Explicación
-    // asignamos todos los elementos dentro de la matriz principal a una nueva matriz usando Array.prototype.map()y devolvemos esta matriz como el resultado final
-    // dentro de cada matriz interna, reducimos su contenido a un solo valor usandoArray.prototype.reduce()
-    // la función de devolución de llamada pasada al método reduce toma el valor anterior y el valor actual y compara los dos valores
-    // si el valor actual es más alto que el valor anterior, lo establecemos como el nuevo valor anterior para compararlo con el siguiente elemento dentro de la matriz o lo devolvemos a la devolución de llamada del método de mapa si es el último elemento
+    
+
+    console.log("---------------------------------------");
+    {
+        // === modificando Simplificada: para hacer prueba del parentesis de map ()  ===
+
+        function largestOfFour(arr) {
+            return arr.map(itemActual => itemActual).reduce((acumulado, actual) => acumulado > actual ? acumulado : actual);
+        }
+        console.log(largestOfFour([4, 5, 1, 3]));
+    }
+    console.log("---------------------------------------");
+
+
+
+
+    {
+
+        //  === Normal===
+        function largestOfFour(arr) {
+            return arr.map((itemActual) => {
+                return itemActual.reduce((acumulado, actual) => {
+                    console.log(acumulado);
+                    return acumulado > actual ? acumulado : actual;
+                });
+            });
+        }
+        console.log(largestOfFour([[4, 5, 1, 3], [13, 27, 18, 26], [32, 35, 37, 39], [1000, 1001, 857, 1]]));
+    }
+
 }
+
+// Submitted by: TitenQ <titenq@gmail.com>
+
+/* 
+  array.map(function (currentValue, index, array) { }, thisValue);
+
+  currentValue - required
+  index - optional
+  array - optional
+  thisValue - optional 
+*/
+
+// Submitted by: TitenQ <titenq@gmail.com>
+
+/* 
+  array.reduce(function (accumulator, currentValue, index, array) { }, initialValue);
+
+  accumulator - required
+  currentValue - required
+  index - optional
+  array - optional
+  initialValue - optional 
+*/
+
+
 
 
 {
@@ -160,7 +202,7 @@
 
     // Aquí estamos pasando nullcomo el contexto del Function.prototype.applymétodo ya Math.maxque no necesita ningún contexto.
 
-    // Dado arr.mapque espera una función de devolución de llamada, no solo una expresión, creamos una función a partir de la expresión anterior utilizando el Function.bindmétodo.
+    // Dado arr.mapque espera una función de devolución de llamada, no solo una expresión, creamos una función a partir de la expresión acumulado utilizando el Function.bindmétodo.
     // Dado que, es un métodoFunction.prototype.apply estático del mismo objeto , podemos llamar a ie .Function Function.prototype.bindFunction.prototype.applyFunction.prototype.apply.bind
     // Ahora pasamos el contexto para la Function.prototype.apply.bindllamada (en este caso queremos Math.maxque podamos obtener su funcionalidad).
     // Dado que el método incrustado Function.prototype.applytambién requerirá un contexto como primer argumento, debemos pasarle un contexto falso .
