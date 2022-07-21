@@ -15,22 +15,21 @@
     };
 
     function Bird() { }
-
     Bird.prototype = Object.create(Animal.prototype);
 
-
     let duck = new Bird();
-    console.log(duck.constructor);
+    console.log(duck.constructor === Bird);
+    console.log(duck.constructor === Animal);
+
+    console.log("------------------");
     // Pero duck y todas las instancias de Bird deberían mostrar que fueron construidas por Bird y no Animal. Para ello, puedes establecer manualmente la propiedad del constructor de Bird al objeto Bird:
-
     Bird.prototype.constructor = Bird;
-    console.log(duck.constructor);
+    console.log(duck.constructor === Bird);
+    console.log(duck.constructor === Animal);
     console.log(duck instanceof Bird);
-
+    console.log(Object.getPrototypeOf(duck));// ¿cual es prototipo de duck?
     // El método {Object.getPrototypeOf()} devuelve el prototipo (es decir, el valor de la [[Prototype]]propiedad interna ) del objeto especificado.
 
-    duck.constructor;
-    console.log(duck.constructor);
 }
 
 
@@ -84,27 +83,36 @@
         }
     };
 
-
     function Bird() { }
-    function Dog() { }
-
     Bird.prototype = Object.create(Animal.prototype);
+    Bird.prototype.constructor = Bird;
+
+    function Dog() { }
     Dog.prototype = Object.create(Animal.prototype);
+    Dog.prototype.constructor = Dog;
+
 
     // Cambia solo el código debajo de esta línea
 
-  console.log("---------------------------------------")
-    
-    Bird.prototype.constructor = Bird;
-    
-    Dog.prototype.constructor = Dog;
-    
+    console.log("---------------------------------------");
+
+
+
     let duck = new Bird();
+    console.log(duck.constructor === Bird);
+    console.log(duck.constructor === Animal);
+    console.log(duck instanceof Bird);
+    console.log(Object.getPrototypeOf(duck));// ¿cual es prototipo de duck?
+
     let beagle = new Dog();
+    console.log(beagle.constructor === Dog);
+    console.log(beagle.constructor === Animal);
+    console.log(beagle instanceof Dog);
+    console.log(beagle instanceof Bird);
+    console.log(Object.getPrototypeOf(beagle));
+
 
     duck.eat();
     beagle.eat();
-    console.log(Object.getPrototypeOf(duck));
-    console.log(Object.getPrototypeOf(beagle));
 
 }

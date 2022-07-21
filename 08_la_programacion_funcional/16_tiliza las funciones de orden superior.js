@@ -81,3 +81,35 @@
     const squaredIntegers = squareList([-3.7, -5, 3, 10, 12.5, 7, -4.5, -17, 0.3]);
     console.log(squaredIntegers);
 }
+{
+     //! solucion codeCamp 3
+     const squareList = arr => {
+        // Cambia solo el código debajo de esta línea
+        return arr
+        .filter((arritem) => arritem % 1 === 0 && arritem >0 ) 
+        .map((item) => item * item)
+        // Cambia solo el código encima de esta línea
+      };
+      
+      const squaredIntegers = squareList([4, 5.6, -9.8, 3.14, 42, 6, 8.34, -2])
+      console.log(squaredIntegers);
+      
+      
+        
+
+}
+{
+
+   //* === Practica del resto %
+    function is_decimal(val){
+        if (val%1 == 0){
+            console.log(val%1 === 0);
+            console.log(val+" es un número entero");
+        }else{
+            console.log(val%1 === 0);
+            console.log(val+" es un número decimal");
+        }
+    }
+    
+    is_decimal(-4);
+}

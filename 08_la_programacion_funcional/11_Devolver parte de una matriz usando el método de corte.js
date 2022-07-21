@@ -1,6 +1,6 @@
 {
     // Devolver parte de una matriz usando el método de corte
-    // El slicemétodo devuelve una copia de ciertos elementos de una matriz. Puede tomar dos argumentos, el primero proporciona el índice de dónde comenzar el segmento, el segundo es el índice de dónde finalizar el segmento (y no es inclusivo). Si no se proporcionan los argumentos, el valor predeterminado es comenzar desde el principio de la matriz hasta el final, que es una manera fácil de hacer una copia de toda la matriz. El slicemétodo no muta la matriz original, sino que devuelve una nueva.
+    // El  método slice devuelve una copia de ciertos elementos de una matriz. Puede tomar dos argumentos, el primero proporciona el índice de dónde comenzar el segmento, el segundo es el índice de dónde finalizar el segmento (y no es inclusivo). Si no se proporcionan los argumentos, el valor predeterminado es comenzar desde el principio de la matriz hasta el final, que es una manera fácil de hacer una copia de toda la matriz. El slicemétodo no muta la matriz original, sino que devuelve una nueva.
 
     // Aquí hay un ejemplo:
 

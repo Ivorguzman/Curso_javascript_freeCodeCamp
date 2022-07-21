@@ -9,11 +9,12 @@
     /*👉 función constructor👈*/
     var SpaceShuttle = function (targetPlanet) {
       this.targetPlanet = targetPlanet;
-    }
+    };
     /*👉 instanciar un objeto.👈*/
-    var zeus = new SpaceShuttle('Jupiter');
+    var zeus = new SpaceShuttle();
+    zeus.targetPlanet = 'Jupiter';//asignar un valor a una propiedad de un objeto  (targetPlanet)
   }
-/*👉  La sintaxis class simplemente reemplaza la creación de la función constructor:👈*/
+  /*👉  La sintaxis class simplemente reemplaza la creación de la función constructor:👈*/
 
   {
     /*👉 sintaxis class 👈*/
@@ -22,7 +23,11 @@
         this.targetPlanet = targetPlanet;
       }
     }
-    const zeus = new SpaceShuttle('Jupiter');
+    const zeus = new SpaceShuttle();
+    zeus.targetPlanet = 'Jupiter';//asignar un valor a una propiedad de un objeto  (targetPlanet)
+    console.log(zeus);
+
+
   }
   // Debe tenerse en cuenta que la  palabra " clave === class === declara una nueva función === ", ==>  a la cual"se añade un ===constructor===". Este constructor se invoca cuando new es llamado para crear un nuevo objeto.
 
@@ -47,7 +52,7 @@
   console.log(carrot.name); // Debería mostrar 'carrot'
 }
 {
-  // === Desafio === 
+  // === Solucion === 
 
   // Usa la palabra clave class y escribe un constructor para crear la clase Vegetable.
 
@@ -56,11 +61,11 @@
   // Cambia solo el código debajo de esta línea
   class Vegetable {
     constructor(name) {
-      this.name = name
+      this.name = name;
     }
-  }
-  // Cambia solo el código encima de esta línea
+  };
+  let carrot = new Vegetable();
 
-  const carrot = new Vegetable('carrot');
-  console.log(carrot.name); // Debería mostrar 'carrot'
+  carrot.name = 'carrot';
+  console.log(carrot.name);
 }

@@ -22,7 +22,7 @@
 
 {
     // Pista 1
-    // Sabes que tu solución debería regresar 1cuando el número pasado a la función sea 0o 1. Además, el valor final devuelto será el producto de todos los números entre 1 y el número (inclusive). Si inicializa el valor del producto a 1, entonces piense cómo podría comenzar en el número dado y continuar disminuyendo este número hasta un valor específico mientras multiplica el producto por el número en cada paso.
+    // Sabes que tu solución debería regresar 1cuando el número pasado a la función sea 0 o 1. Además, el valor final devuelto será el producto de todos los números entre 1 y el número (inclusive). Si inicializa el valor del producto a 1, entonces piense cómo podría comenzar en el número dado y continuar disminuyendo este número hasta un valor específico mientras multiplica el producto por el número en cada paso.
 
     // Solución recursiva
 
@@ -77,41 +77,43 @@
 
     {
         // === desafio ===
-/*👉
-        function factorialize(num) {
-            return num;
-        }👈*/
+        /*👉
+                function factorialize(num) {
+                    return num;
+                }👈*/
     }
 
 
-    // === Solucion1 ===
-/*👉    {
-        function factorialize(num) {
-            let product = 1;
-            for (let i = 1; i <= num; i++) {
+    {    // === Solucion1 ===
 
-                // console.log(`Valor del contador i ==> ${i}`);
-
-                // console.log(` Valor de( product = product * i) ==> ${product = product * i}`);
-                // console.log("");
-                //  product *= i;
+        function factorialize(num, factorial = 1) {
+            let acumulador = 1;
+            if (num >= 1) {
+                for (let i = 1; i <= num; i++) {
+                    acumulador = acumulador * i;
+                    console.log(acumulador);
+                }
+                return acumulador;
             }
-            return product;
+            else {
+
+                // console.log(" Introdusca numeros mayores a Cero (0)");
+                // console.log(factorial);
+                return factorial;
+            };
+
+
         }
+        factorialize(0);
 
-        factorialize(5);
-    }👈*/
+    }
 
-    // Código Explicación
-    // Dado que los valores de retorno de la función siempre serán mayores o iguales a 1, productse inicializa en uno. Para el caso en que el número sea 0, la condición del bucle for será falsa, pero dado productque se inicializa como 1, tendrá el valor correcto cuando returnse ejecute la declaración.
-
-    // Para todos los números pasados ​​a la función que son mayores que uno, el forciclo simple incrementará ien uno cada iteración y volverá a calcular producthasta el valor num.
 }
 
 
 {
     /*👉(usando recursividad)👈*/
-debugger;
+
     function factorialize(num) {
         if (num === 0) {
             return 1;
@@ -151,15 +153,15 @@ debugger;
 
     // Solución 3(usando recursividad y parametro por defecto)
 
-/*👉    function factorialize(num, factorial = 1) {
-        if (num === 0) {
-            return factorial;
-        } else {
-            return factorialize(num - 1, factorial * num);
+    /*👉    function factorialize(num, factorial = 1) {
+            if (num === 0) {
+                return factorial;
+            } else {
+                return factorialize(num - 1, factorial * num);
+            }
         }
-    }
-
-    factorialize(5);👈*/
+    
+        factorialize(5);👈*/
 
 
     // Código Explicación
@@ -180,17 +182,39 @@ debugger;
 
 {
     // Solución 4 (haga clic para mostrar/ocultar)
-/*👉    function factorialize(num) {
-        return num < 0 ? 1 :
-            new Array(num)
+
+
+    function factorial(num) {
+        let factorizacion = new Array(num);
+        return (num <= 0) ? 1
+            : factorizacion
                 .fill(undefined)
-                .reduce((product, _, index) => product * (index + 1), 1);
-    }
-    factorialize(5);👈*/
+                .reduce((acumulador, _, indice) => {
+                    console.log(acumulador, indice + 1);
+                    return acumulador * (indice + 1);
+                }, 1);
+    };
+    console.log(factorial(0));
+
+    // function factorial(num) {
+    //     return (num <= 0) ? console.log("No se puede factorizar numero igual o menor a 0  ") :
+    //         new Array(num)
+    //             .fill(undefined)
+    //             .reduce((acumulador, _, indice) => acumulador = acumulador * (indice + 1), 1);
+    //         };
+
+
+    console.log("---------------------------------------");
+
+
     // Código Explicación
-    // En esta solución, usamos la función "reducir" para encontrar el valor factorial del número.
-    // Hemos creado una matriz que tiene longitud num. Y llenamos todos los elementos de la matriz como undefined. En este caso, tenemos que hacer esto porque las matrices vacías no se pueden reducir. Por cierto, puede llenar la matriz como desee. Esto depende completamente de su vista de ingeniería.
-    // En reduceel acumulador de la función está llamando, producteste es también nuestro valor final. Estamos multiplicando nuestro valor de índice con el producto para encontrar el factorialvalor.
-    // Estamos configurando el valor inicial del producto en 1 porque si fuera cero, los productos siempre obtienen cero.
+    // En esta solución, usamos el metodo reduce()" para encontrar el valor factorial del número.
+
+    // Hemos creado una matriz que tiene longitud num. Y llenamos todos los elementos de la matriz como undefined. En este caso, tenemos que hacer esto porque las matrices vacíasn no se  les puede aplicar el metodo reduce(). Por cierto, puede llenar la matriz como desee. Esto depende completamente de su vista de ingeniería.
+
+    // En el reduce el acumulador  es le parametro  product, este es también nuestro valor final. Estamos multiplicando nuestro valor dl parametro  índice con el producto para encontrar el  valor factorial
+
+    // Estamos configurando el valor inicial del producto en 1 porque si fuera cero, los productos siempre obtienen cero. 
+
     // Además, el valor factorial no se puede calcular para números negativos, en primer lugar, estamos probando esto.
 }

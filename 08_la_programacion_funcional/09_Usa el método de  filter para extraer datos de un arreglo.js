@@ -1,6 +1,6 @@
 
 
-'use strict'
+'use strict';
 
 {
   // Usa el método de "filter" para extraer datos de un arreglo
@@ -168,16 +168,19 @@ const watchList = [
 
   // Cambia solo el código debajo de esta línea
 
+
+  
+
   const filteredList = watchList
     .map(function (peliculas) {
       return {
         title: peliculas.Title,
         rating: peliculas.imdbRating
-      }
+      };
     })
     .filter(function (pelicula) {
       return pelicula.rating >= 8;
-    })
+    });
 
   // Cambia solo el código encima de esta línea
 
@@ -239,8 +242,6 @@ const watchList = [
     //! Solución 3
     // Only change code below this line
 
-
-
     var filteredList = watchList
       .map(function ({ Title: title, imdbRating: rating }) {
         return ({ title, rating });
@@ -254,6 +255,26 @@ const watchList = [
     // Only change code above this line
 
   }
+
+  {
+    //! Solución 4 con uso del parametro index de la funcion map y destructuración
+
+    const filteredList = watchList.filter((item) => {
+      console.log(this);
+      console.log(item);
+      return item.imdbRating >= 8.0;
+    }).map((item, index) => {
+      console.log(item);
+      // return ( { 'title': watchList[index].Title, 'rating': watchList[index].imdbRating })
+      const { Title: title, imdbRating: rating } = item;  // destructuracion
+      return { title, rating };
+    }
+    );
+
+    // Cambia solo el código encima de esta línea
+
+    console.log(filteredList);
+  }
   {
 
     //! === PRACTICAS PERSONALES ==>  Creando my propia funcion map() ==> Map()
@@ -263,11 +284,11 @@ const watchList = [
       for (let i = 0; i < watchList.length; i++) {
         nuevo_array[i] = funcionCallBack(watchList[i]);
       }
-      return nuevo_array
-    }
+      return nuevo_array;
+    };
 
-    const nuevo_array = watchList.Map(({ Title: title, imdbRating: rating }) => ({ title, rating }))
-    console.log(nuevo_array)
+    const nuevo_array = watchList.Map(({ Title: title, imdbRating: rating }) => ({ title, rating }));
+    console.log(nuevo_array);
 
 
   }
@@ -291,16 +312,16 @@ const watchList = [
   ];
 
   const productoConDescuento = productos.filter((producto) => { //! ===> un filter
-    return producto.precio >= 1000
+    return producto.precio >= 1000;
   })
     .map((producto) => {
       let pieza = producto.nombre;
       let precio = producto.precio;
       let montoPorcentaje = 10;
-      let porcentajeDescuento = montoPorcentaje / 100
+      let porcentajeDescuento = montoPorcentaje / 100;
       let descuento = producto.precio * porcentajeDescuento;
       let totalPagar = producto.precio - descuento;
-      let x = `productos en descuento ${pieza}, precio ${precio} Bs,   descuento del ${montoPorcentaje}%, monto de ldescuento ${descuento} Bs, precio  a cancelar  ${totalPagar} Bs`
+      let x = `productos en descuento ${pieza}, precio ${precio} Bs,   descuento del ${montoPorcentaje}%, monto de ldescuento ${descuento} Bs, precio  a cancelar  ${totalPagar} Bs`;
       return x;
     });
 
@@ -358,10 +379,10 @@ const watchList = [
 
     })
       .map((itemMap) => {
-        console.log(itemMap)
-        return itemMap.postre
+        console.log(itemMap);
+        return itemMap.postre;
 
-      })
+      });
 
 
     console.log(postresSoloArepas);
@@ -397,11 +418,11 @@ const watchList = [
   //! === PRACTICAS PERSONALES ==> 4 ===
 
   function getIndexToIns(arr) {
-    return arr > 50
+    return arr > 50;
   }
 
-  let resultado = [40, 60].filter(getIndexToIns)
-  console.log(resultado)
+  let resultado = [40, 60].filter(getIndexToIns);
+  console.log(resultado);
 }
 
 {
@@ -413,9 +434,9 @@ const watchList = [
    */
   function filterItems(query) {
     return fruits.filter(function (el) {
-      console.log(el.toLowerCase())
+      console.log(el.toLowerCase());
       return el.toLowerCase().indexOf(query.toLowerCase()) > -1;
-    })
+    });
   }
 
   console.log(filterItems('ap')); // ['apple', 'grapes']
@@ -449,7 +470,7 @@ const watchList = [
       entradasInvalidas++;
       return false;
     }
-  })
+  });
 
   console.log(resultadoFiltrado);
   console.log('Número de Entradas Invalidas = ', entradasInvalidas);
@@ -483,7 +504,7 @@ const watchList = [
 
     if ('id' in obj && typeof (obj.id) === 'number' && !isNaN(obj.id)) {
 
-      return true,  console.log(` indice de las entrada valida = ${index}`);
+      return true, console.log(` indice de las entrada valida = ${index}`);
     } else {
       entradasInvalidas++;
       return false, console.log(` indice de las entrada invalida = ${index}`);

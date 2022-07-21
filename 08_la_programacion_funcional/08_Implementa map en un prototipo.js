@@ -9,6 +9,36 @@
 }
 
 {
+    // === -----------Ejemplo de map()---------- ===
+
+    console.log(' === Ejemplo de map() === ');
+
+    const array = [23, 65, 98, 5];
+    const nuevo_array = array.map(((itemArray) => itemArray * 2));
+    console.log(nuevo_array);
+}
+{
+    console.log("----Ejemplo de array.forEach-----");
+    // Submitted by: TitenQ <titenq@gmail.com>
+    /*
+      array.forEach(function (currentValue, index, array) { }, thisValue);
+    
+      currentValue - required
+      index - optional
+      array - optional
+      thisValue - optional 
+    */
+    const numbers = [1, 2, 3, 4, 5];
+    const newArray = [];
+    console.log(newArray);
+    // numbers.forEach(itemArray => console.log(newArray.push(itemArray * 2)));
+    numbers.forEach(itemArray => newArray.push(itemArray * 2));
+    console.log(newArray);
+}
+
+console.log("---------------------------------------")
+  
+{
     // === Desafio ===
 
 
@@ -32,22 +62,24 @@
 
 
 {
-    // === Solucion ===
+    // === Solucion 1 con bucle for() ===
 
 
     // Escribe tu propio Array.prototype.myMap(), el cual debe comportarse exactamente como Array.prototype.map(). No debes utilizar el método incorporado map. Se puede acceder a la instancia de Array en el método myMap usando this.
+
 
     // La variable global
     const array = [23, 65, 98, 5];
 
 
-    Array.prototype.Map = function (funcionCallBack) {
+    Array.prototype.myMap = function (myCallBack) {
+        console.log(this)//array
         const nuevo_array = [];
         // Cambia solo el código debajo de esta línea //;
-        for (let i = 0; i < array.length; i++) {
-            nuevo_array[i] = funcionCallBack(array[i]);
+        for (let i = 0; i < this.length; i++) {
+            nuevo_array[i] = myCallBack(this[i]);
             // console.log(funcionCallBack)
-            //console.log(nuevo_array[i])
+            console.log(nuevo_array[i])
 
         }
         // Cambia solo el código encima de esta línea
@@ -55,25 +87,55 @@
     };
 
 
-    /*👉const nuevo_array = array.MAP()👈*/
-    const nuevo_array2 = array.Map((items) => items * 2);
-    console.log(nuevo_array2)
+    const nuevo_array = array.myMap((items) => items * 2);
+    console.log(nuevo_array);
 }
+
 
 
 
 {
-    const array = [23, 65, 98, 5];
-    const nuevo_array = array.map(function (items) {
-            items = items * 2;
-            return items;
-        })
+    // === Solucion 2 con forEach() con  funcione flecha ()=>{} ===
 
-    // console.log(nuevo_array);
+    // La variable global
+    const array = [23, 65, 98, 5];
+
+    Array.prototype.myMap = (mycallBack) => {
+        console.log(this);// window
+        console.log(mycallBack);
+        const newArray = [];
+        array.forEach((itemArray) => {
+            newArray.push(mycallBack(itemArray));
+            console.log(newArray);
+        });
+        return newArray;
+    };
+
+    let new_array = array.myMap((itemArray) => itemArray * 2);
+    console.log(new_array);
+    console.log(Array.prototype.myMap);
+
+
+
 }
 
+{
+    // === Solucion  con forEach() con  funcione Anonima ===
 
+    var array = [23, 65, 98, 5];
 
+    // Recive funcion que a su ves retorna su parametro multiplicado por 2
+    Array.prototype.myMap = function (callBack) {
+        console.log(this); // array 
+        var new_array = [];
+        for (let i = 0; i < this.length; i++) {
+            new_array.push(callBack(this[i]));
+        }
+        return new_array;
+    };
+
+    let arrayFinal = array.myMap((itemArray) => itemArray * 2);
+}
 
 
 
@@ -82,15 +144,13 @@
 
     /*👉=== Prctica de funcion Call Back ===👈*/
 
-    miMap = function (funcionCallBack) {
-        resultado = funcionCallBack(2, 3)
-        console.log(funcionCallBack);
-        console.log(`El resultado de esta operacion es : ${resultado}`);
-    }
+    resultadoCallBack = (myCallBack) => {
+        resultado = myCallBack(2, 3);
+        return resultado;
+    };
 
-    miMap(function (a, b) {
-        return ((a + b) * 2);
-    })
+    console.log(resultadoCallBack((a, b) => a + b));
+    console.log(`El resultado de esta operacion es : ${resultado}`);
 
 
 
@@ -98,6 +158,7 @@
 
 
 {
+    /*👉 === Practica de map ===👈*/
     const almuerzos = [
         { principal: 'arepa', postre: 'helado' },
         { principal: 'tacos', postre: 'torta de queso' },
@@ -107,123 +168,44 @@
     ];
 
     {
-        /*👉 === Paradigma imperativo ===👈*/
+        console.log(this)
 
         const platosPrincipales = [];
 
         for (let i = 1; i <= almuerzos.length; i++) {
             platosPrincipales.push(almuerzos[i - 1].principal);
         }
-        console.log(platosPrincipales)
+        console.log(platosPrincipales);
     }
 
     {
-        /*👉 === Paradigma funcional ===👈*/
+        /*👉 === Parametro del metodo map ===👈*/
 
         const platosPrincipales = almuerzos.map((itemDelArray, indiceDelArray, elArray) => {
             console.log(itemDelArray);
             console.log(indiceDelArray);
             console.log(elArray);
-            return itemDelArray.principal
+            return itemDelArray.principal;
         });
         console.log(platosPrincipales);
     }
 }
 
-{
-
-    // Solución 1 
-    // The global Array
-    var array = [23, 65, 98, 5];
-    /*👉 Sintaxis: ==> Array.prototype.name = value👈*/
-
-    // Recive funcion que a su ves retorna su parametro multiplicado por 2
-    Array.prototype.myMap = function (callBack) {
-        var new_array = [];
-        // console.log(this);
-        for (let i = 0; i < this.length; i++) {
-            new_array.push(callBack(this[i]));
-        }
-
-        return new_array;
-    };
-
-    var arrayFinal = array.myMap((itemDelArray) => itemDelArray * 2);
-
-
-    // console.log(arrayFinal);
-
-    // Código Explicación
-    // Resuelve este desafío usando un bucle "for" y this
-
-    // El uso de un bucle "for" nos permite aplicar la función callBack a cada elemento de la matriz global y luego enviar los elementos modificados a la nueva matriz vacía que se devuelve al final.
-
-}
 
 
 
-{
-    // Solución 2  usando el método forEach
-
-
-    /*👉    Este es un prototipo de un método llamado myMap. El método llama a una determinada función llamada "devolución de llamada" (podría ser cualquier otro nombre), que:
-    
-    1.  Crea un newArray;
-
-    2. Usando la palabra clave this, establece la propiedad, como es habitual en un constructor, y en este caso la propiedad es la función (método forEach );
-
-    3. Itera a través de [s] matriz usando el método forEach;
-
-    4.En cada elemento de [s] matriz ejecuta la función llamada "callback()";
-
-    5. El resultado de cada paso de ejecución de la función se inserta en el newArray creado  ;
-    el método devuelve newArray.
-
-    6. Cuando llamamos al método myMap() en la matriz de origen s, realiza todas estas acciones, además de callback(a)performs item*2, en este ejemplo, y devuelve el resultado general.
-    
-    
-    Esto todavía no es del todo correcto, considerando que tanto forEach() como map() esperan más de un argumento, el código adecuado debería ser algo así: this.forEach((...arg) => newArray.push(callback(.. .arg))); esto en JS se refiere a un contexto de ejecución actual, que es, en otras palabras, qué objeto se ejecuta.
-    👈*/
-
-    // the global Array
-    var s = [23, 65, 98, 5];
-
-    Array.prototype.myMap = function (callback) {
-        var newArray = [];
-        // Add your code below this line
-        this.forEach(a => newArray.push(callback(a)));
-        // Add your code above this line
-        return newArray;
-    };
-
-    var new_s = s.myMap(function (item) {
-        return item * 2;
-    });
-
-    console.log(new_s)
-    // Código Explicación
-    // Resuelve este desafío usando this y el método forEach
-
-    // La palabra clave this nos da acceso al objeto al que llamamos myMap.
-
-    // A partir de ahí, podemos usar el método forEach para agregar elementos a una matriz vacía ya declarada a medida que modificamos cada elemento con el método de devolución de llamada dado.
-}
 
 {
     // Solución 3   Resuelve este desafío usando recursividad y metodo ternario parametreos por defecto
 
-    // The global Array
-    var s = [23, 65, 98, 5];
-debugger;
+    let s = [23, 65, 98, 5];
+    // console.log(this) // window
     Array.prototype.myMap = function (callback, newArray = [], i = 0) {
-        return i < this.length
-            ? (this.myMap(callback, newArray.concat(callback(this[i])), i + 1))
-            : (
-                newArray
-            )
+        // console.log(this)// [23, 65, 98, 5]
+        return i < this.length ? (this.myMap(callback, newArray.concat(callback(this[i])), i + 1)): (newArray);
     };
 
-    var new_s = s.myMap((item) => item * 2)
+    let new_s = s.myMap((item) => item * 2);
     console.log(new_s);
 
 

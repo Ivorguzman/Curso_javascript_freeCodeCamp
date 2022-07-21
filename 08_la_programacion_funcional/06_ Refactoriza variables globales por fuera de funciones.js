@@ -27,9 +27,8 @@
     const bookList = ["The Hound of the Baskervilles", "On The Electrodynamics of Moving Bodies", "Philosophiæ Naturalis Principia Mathematica", "Disquisitiones Arithmeticae"];
 
     // Cambia el código debajo de esta línea
-    debugger
     function add(bookList, bookName) {
-        let bookListCopy = bookList.slice()
+        let bookListCopy = bookList.slice();
         bookListCopy.push(bookName);
         // console.log(bookListCopy);
         return bookListCopy;
@@ -49,15 +48,15 @@
         }
     }
 
-/*👉
-    const newBookList = add(bookList, 'A Brief History of Time')
-    console.log(newBookList);
-
-    const newerBookList = remove(bookList, 'On The Electrodynamics of Moving Bodies');
-    console.log(newerBookList);👈*/
+    /*👉
+        const newBookList = add(bookList, 'A Brief History of Time')
+        console.log(newBookList);
+    
+        const newerBookList = remove(bookList, 'On The Electrodynamics of Moving Bodies');
+        console.log(newerBookList);👈*/
 
     const newestBookList = remove(add(bookList, 'A Brief History of Time'), 'On The Electrodynamics of Moving Bodies'); //remove('A Brief History of Time','On The Electrodynamics of Moving)
-    console.log(newestBookList);
+    // console.log(newestBookList);
 }
 
 {
@@ -69,32 +68,37 @@
     //* Nota: ambas funciones deben devolver un arreglo y cualquier nuevo parámetro debe ser añadido antes del parámetro bookName.
 
 
-    //! La variable global
+    //! La variable global  
+    // La variable global
     const bookList = ["The Hound of the Baskervilles", "On The Electrodynamics of Moving Bodies", "Philosophiæ Naturalis Principia Mathematica", "Disquisitiones Arithmeticae"];
 
     // Cambia el código debajo de esta línea
-    function add(bookName) {
-
-        bookList.push(bookName);
-        return bookList;
+    function add(bookList, bookName) {
+        let newbookList = bookList.slice();
+        newbookList.push(bookName);
+        return newbookList;
 
         // Cambia el código encima de esta línea
     }
 
-    // Cambia el código debajo de esta línea
-    function remove(bookName) {
-        const book_index = bookList.indexOf(bookName);
-        if (book_index >= 0) {
 
-            bookList.splice(book_index, 1);
-            return bookList;
+    // Cambia el código debajo de esta línea
+    function remove(bookList, bookName) {
+        let newbookList = bookList.slice();
+        let book_index = newbookList.indexOf(bookName);
+        console.log(book_index);
+        if (book_index >= 0) {
+            console.log(newbookList[book_index]);
+            console.log("  Parametos de el newbookList.splice(book_index, book_index)  ==> " + book_index, book_index);
+            newbookList.splice(book_index, book_index);
+            console.log(" ");
+            return newbookList;
 
             // Cambia el código encima de esta línea
         }
     }
 
-
-    const newBookList = add(bookList, 'A Brief History of Time');
-    const newerBookList = remove(bookList, 'On The Electrodynamics of Moving Bodies');
-    const newestBookList = remove(add(bookList, 'A Brief History of Time'), 'On The Electrodynamics of Moving Bodies');
+    //console.log(add(bookList, "A Brief History of Time"))
+    //console.log(remove(bookList, "Disquisitiones Arithmeticae"))
+    console.log(remove(add(bookList, "A Brief History of Time"), "On The Electrodynamics of Moving Bodies"));
 }

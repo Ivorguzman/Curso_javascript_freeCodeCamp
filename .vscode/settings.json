@@ -3,5 +3,5 @@
     "files.watcherExclude": {
         "**/target": true
     },
-    "commentTranslate.hover.enabled": false
+    "commentTranslate.hover.enabled": true
 }

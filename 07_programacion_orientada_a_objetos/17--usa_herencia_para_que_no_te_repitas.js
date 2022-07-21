@@ -20,12 +20,14 @@
     console.log("------------duck------------------");
     let duck = Object.create(Animal.prototype);
     console.log(duck);
-
+    ///El método Object.create() crea un objeto nuevo, utilizando un objeto existente como el prototipo del nuevo objeto creado.
     
+    ///El método Object.create() no crea una copia del objeto existente, sino que crea una copia del prototipo del objeto existente.
+
     function Dog(name) {
         this.name = name;
     }
-    
+
     Dog.prototype = {
         constructor: Dog,
         describe: function () {

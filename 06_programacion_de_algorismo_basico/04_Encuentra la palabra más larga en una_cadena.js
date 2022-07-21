@@ -1,5 +1,5 @@
 {
-    //! Ejercicios
+    //! Desafio
     ///    Devuelve la longitud de la palabra más larga en la oración proporcionada.
 
     //* Tu respuesta debe ser un número.
@@ -10,111 +10,93 @@
     findLongestWordLength("The quick brown fox jumped over the lazy dog");
 
 }
+
+
 {
-    /// 1. (Enfoque procesal) Utilizando ciclo for(){}
+    /// Solucion 1
+    function findLongestWordLength(str) {
+        str.split(" ");
+        let longitudes = [];
+        for (let i = 0; i < str.split(" ").length; i++) longitudes.push(str.split(" ")[i].length);
+        return Math.max(...longitudes);
+    }
+    // console.log(findLongestWordLength("The quick brown fox jumped over the lazy dog"));
+    // console.log(findLongestWordLength("What if we try a super-long word-such as otorhinolaryngology"));
+}
+
+
+{
+    /// Solucion 2 Usando.reduce()
+    function findLongestWordLength(str) {
+       
+        return str.split(" ")
+            .reduce((acum, itemStr) => {
+                return  Math.max(acum, itemStr.length);
+            }, 0);
+    }
+    console.log(findLongestWordLength("The quick brown fox jumped over the lazy dog"));
+    // console.log(findLongestWordLength("What if we try a super-long word such as otorhinolaryngology"));
+    // console.log(findLongestWordLength("Google do a barrel roll"));
+}
+
+
+{
+    /// Solucion 3 Usando.map()
 
     function findLongestWordLength(str) {
-        let arrPalabras = str.split(" ");
-        let maximaLongitudPalabra = 0;
+        // let esUnArray = (str.split(" "));
 
-        for (let i = 0; i < arrPalabras.length; i++) {
-            if (arrPalabras[i].length > maximaLongitudPalabra) {
-                maximaLongitudPalabra = arrPalabras[i].length;
-            }
-        }
-        return maximaLongitudPalabra;
+        // console.log("---Pruebas---");
+
+        // console.log(esUnArray);
+        // console.log(Array.isArray(esUnArray));//true
+
+        // console.log(...esUnArray);
+        // console.log(Array.isArray(...esUnArray));//false
+
+        // console.log(...str.split(" "));
+        // console.log(Array.isArray(...str.split(" ")));//false
+
+        // console.log(str.split(" "));
+        // console.log(Array.isArray(str.split(" ")));//true
+
+        // console.log(...str);
+        // console.log(Array.isArray(...str));//false
+        // console.log(str.length);
+
+        // console.log("---./Pruebas---");
+        return Math.max(...str.split(" ").map((itemActual, index) => {
+            return itemActual.length;
+        }));
     }
-    findLongestWordLength("jumped The quick brown fox over the lazy dog camello");
+    // console.log(findLongestWordLength("The quick brown fox jumped over the lazy dog"));
+    // console.log(findLongestWordLength("What if we try a super-long word such as otorhinolaryngology"));
+    // console.log(findLongestWordLength("Google do a barrel roll"));
 }
+
+
 {
-    /// 2. Solucion Funcional Utilizando.reduce()
-    {
-        //? Utilizando.reduce()
-        debugger;
-        function findLongestWordLength(str) {
+    /// Solucion 4 Usando for 
 
-            return str.split(' ')
-                .reduce((longest, word) =>
-                    Math.max(longest, word.length), '');
-        }
-        console.log(findLongestWordLength("The quick brown fox jumped over the lazy dog"));
-    }
+    function findLongestWordLength(str) {
+        let array = str.split(' ');
+        let longitudActual = 0;
+        let nombreDePalabra = "";
 
-
-    {
-        /// 2.1 Solucion Funcional Utilizando.reduce()
-        //! Variente del  ejercicio (palabra mas larga)
-
-        //? Utilizando.reduce()
-
-        function findLongestWord(str) {
-            let palabraMasLarga = str.split(' ')
-                .reduce((laMasLarga, palabraActual) => palabraActual.length > laMasLarga.length ? palabraActual : laMasLarga, " ");
-            return palabraMasLarga;
-        }
-        let laMasLargaEs = findLongestWord("The quick brown fox jumped over the lazy dog");
-        // console.log(laMasLargaEs);
-    }
-
-    {
-        /// 3. Solucion Funcional Utilizando.map()
-
-        function findLongestWordLength(str) {
-            let longitudMasLarga = [...str.split(" ").map((word) => word.length)]
-            let imprimir = console.log(Math.max(...longitudMasLarga))
-            return; imprimir
-        }
-
-        // findLongestWordLength("The quick brown fox jumped over the lazy dog")
-    }
-    {
-
-        /// 3.2 Solucion Funcional Utilizando.map()
-        function findLongestWordLength(str) {
-            let wordLengths = str.split(" ").map(w => w.length);
-            const maxLength = Math.max(...wordLengths);
-            return maxLength;
-        }
-        console.log(findLongestWordLength("The quick brown fox jumped over the lazy dog"));
-
-    }
-    {
-        /*👉        /// 3. Solucion Funcional Utilizando la recurcion
-                function findLongestWordLength(str) {
-                    //? dividir la cadena en palabras individuales
-                    const words = str.split(" ");
-                    //? palabras solo tengan 1 elemento,  que es el elemento más largo
-                    if (words.length == 1) {
-                        return words[0].length;
-                    }
-        
-                    //? si las palabras tienen varios elementos, elimine el primer elemento
-                    //? y recursivamente llamar a la función
-                    let queDebuelveSlice = words.slice(1)
-                    return Math.max(words[0].length, findLongestWordLength(words.slice(1).join(" "))
-                    );
-        
-                }
-                findLongestWordLength("The quick brown fox jumped over the lazy dog");
-        👈*/
-
-
-
-        {
-            /// 3. Solucion Funcional Utilizando la recurcion
-            function findLongestWordLength(str) {
-                const words = str.split(" ");
-                if (words.length == 1) {
-                    return words[0].length;
-                }
-                return findLongestWordLength(words.slice(1).join(" "));
-                // return Math.max(words[0].length, findLongestWordLength(words.slice(1).join(" "))
+        for (let i = 0; i < array.length; i++) {
+            if (array[i].length > longitudActual) {
+                longitudActual = array[i].length;
+                nombreDePalabra = array[i];
 
             }
-
         }
+        console.log(nombreDePalabra);
 
+        return longitudActual;
     }
+
+    // console.log(findLongestWordLength("The quick brown fox jumped over the lazy dog"));
+    // console.log(findLongestWordLength("What if we try a super-long word such as otorhinolaryngology"));
+    // console.log(findLongestWordLength("Google do a barrel roll"));
+
 }
-
-

@@ -99,6 +99,7 @@
   // En otras palabras, estás abstrayendo los detalles de la implementación del usuario.
   // Cambia solo el código debajo de esta línea
 
+
   console.log(' ');
   console.log("---=== Solucion  ===----");
 
@@ -130,7 +131,7 @@
 }
 
 {
-  //* Prazctica mdn ==> https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Working_with_Objects#definici%C3%B3n_de_captadores_getters_y_establecedores_setters
+  //* Practica mdn ==> https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Working_with_Objects#definici%C3%B3n_de_captadores_getters_y_establecedores_setters
 
   //* Definición de captadores (getters) y establecedores (setters)
 

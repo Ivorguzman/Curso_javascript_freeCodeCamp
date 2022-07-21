@@ -12,41 +12,32 @@
 
     // Tendría sentido pasarlos como argumentos a otras funciones y devolver una función de otra función. Las funciones se consideran Objetos de primera calase  en JavaScript, lo que significa que pueden ser usados como cualquier otro objeto. Pueden guardarse en variables, almacenarse en un objeto o pasarse como argumentos de función.
 
-    // Empecemos con algunas funciones de arreglos simples, que son métodos en el prototipo de objetos del arreglo. En este ejercicio estamos utilizando Array.prototype.map() o más específicamente map.
+    /// Empecemos con algunas funciones de arreglos simples, que son métodos en el prototipo de objetos del arreglo. En este ejercicio estamos utilizando Array.prototype.map() o más específicamente map.
 
-    /*👉El método map() iterará sobre cada elemento de un arreglo y devuelve un nuevo arreglo👈*/ //que contiene los resultados de llamar a la función callback en cada elemento.//
+    /*👉El método map() iterará sobre cada elemento de un arreglo y devuelve un nuevo arreglo👈*/ ///que contiene los resultados de llamar a la función callback en cada elemento.//
     /*👉Esto lo hace sin mutar el arreglo original.👈*/
 
-    // Cuando se utiliza la función callback, se pasan tres argumentos. El primer argumento es el elemento actual que se está procesando. El segundo es el índice de ese elemento y el tercero es el arreglo al que se llamó el método map.
+    /// Cuando se utiliza la función callback, se pasan tres argumentos. El primer argumento es el elemento actual que se está procesando. El segundo es el índice de ese elemento y el tercero es el arreglo al que se llamó el método map.
 
-    // A continuación se muestra un ejemplo con el método map() en el arreglo users para devolver un nuevo arreglo que contiene solo los nombres de los usuarios como elementos. Para que sea más fácil, el ejemplo solo utiliza el primer argumento del callback.
+    /// A continuación se muestra un ejemplo con el método map() en el arreglo users para devolver un nuevo arreglo que contiene solo los nombres de los usuarios como elementos. Para que sea más fácil, el ejemplo solo utiliza el primer argumento del callback.
 
     {
         const users = [{ name: 'John', age: 34, }, { name: 'Amy', age: 20 }, { name: 'camperCat', age: 10 }];
-        users
+        users;
 
         {
             const names = users.map((user) => user.name);
             // console.log(names);
         }
-        {
-            const age = users.map((user) => { return user.age });
-            // console.log(age);
-        }
-        {
-            const names = users.map((user) => {
-                return user.name;
-            });
-            // console.log(names);
-        }
-        {
-            const names = users.map(function (user) {
-                user = user.name;
-                // console.log(user)
-                // return `Nombre: ${user}`
-            })
-            // console.log(names);
-        }
+
+
+        const names = users.map((user) => {
+            console.log(user);
+            return user.name;
+        });
+        console.log(names);
+
+
     }
 
 
@@ -103,7 +94,7 @@
 
 
 
-    
+
 }
 
 
@@ -229,49 +220,110 @@ const watchList = [
 
 {
     // === Desafio ===
-    // Cambia solo el código debajo de esta línea
 
+
+    console.log("--- === Desafio === ---");
     const ratings = [];
+    const ratings2 = [];
     for (let i = 0; i < watchList.length; i++) {
+        console.log(watchList[i].Title);
+        console.log(watchList[i].imdbRating);
+        console.log("---------=== Con sintaxis de Corchete === ---------");
         ratings.push({ title: watchList[i]["Title"], rating: watchList[i]["imdbRating"] });
+        console.log('  ');
+        ratings2.push({ title: watchList[i].Title, rating: watchList[i].imdbRating });
     }
-
     // Cambia solo el código encima de esta línea
-
-    // console.log(JSON.stringify(ratings));
+    console.log('  ');
+    console.log("=== Con sintaxis de Corchete ===");
+    console.log(ratings);
+    console.log('  ');
+    console.log(JSON.stringify(ratings));
+    console.log("=== Con sintaxis de Punto ===");
+    console.log(ratings2);
+    console.log('  ');
+    console.log(JSON.stringify(ratings2));
+    console.log('  ');
 
 }
 
 {
-    // === Solucion del desafio ===
+    /// === Solucion del desafio con for in ===
+
+    {
+        const array = [];
+        for (let i = 0; i < watchList.length; i++) {
+            array.push({ title: watchList[i]["Title"], rating: watchList[i]["imdbRating"] });
+        }
+        console.log("=== Con sintaxis de Corchete ===");
+        console.log(array);
+    }
+    {
+        const array2 = [];
+        for (let i = 0; i < watchList.length; i++) {
+            array2.push({ title: watchList[i].Title, rating: watchList[i].imdbRating });
+        }
+        console.log("=== Con sintaxis de Punto === ");
+        console.log(array2);
+    }
+}
+{
+
+    /// === Solucion del desafio ===
     // console.log(watchList.length - 1)
+    // Submitted by: TitenQ <titenq@gmail.com>
 
-    const ratings = watchList.map((item) => ({ title: item.Title, rating: item.imdbRating }))
+    /* 
+      array.map(function (currentValue, index, array) { }, thisValue);
+    
+      currentValue - required
+      index - optional
+      array - optional
+      thisValue - optional 
+    */
 
+    const ratings = watchList.map((array) => ({ title: array.Title, rating: array.imdbRating }));
 
     const años = watchList.map(function (array) {
         return { año: array.Year, fecha: array.Released };
-    })
+    });
 
     const sensura = watchList.map(function (array) {
-        let pelicula = { Titulo: array.Title, Año: array["Year"], Clase: array.Rated }
+        let pelicula = { Titulo: array.Title, Año: array["Year"], Clase: array.Rated };
         // console.log(pelicula);
-        return pelicula
-    })
+        return pelicula;
+    });
 
-    /*👉Funcion Anonima ==> (CallBack)👈*/
-    const pulicidad = watchList.map((array) => ({ Titulo: array["Title"], propaganda: array.Poster }))
+    const pulicidad = watchList.map((array) => ({ Titulo: array["Title"], propaganda: array.Poster }));
     // console.log(pulicidad);
 
-    /*👉Funcion Flecha ==> (CallBack)👈*/
     const premios = watchList.map(array => ({ Pelicula: array.Title, Premio: array.Awards }));
     // console.log(premios);
 
     // === DESTRUCTURACION ===
 
-    const origen = watchList.map(({ Title: Titulo, Country: Paises }) => ({ Titulo, Paises }))
+    const origen = watchList.map(({ Title: Titulo, Country: Paises }) => ({ Titulo, Paises }));
     // console.log(origen);
+}
 
+{
+    /// === Solucion del desafio con un forEach() ===
+    // Submitted by: TitenQ <titenq@gmail.com>    
+    /* 
+      array.forEach(function (currentValue, index, array) { }, thisValue);
+    
+      currentValue - required
+      index - optional
+      array - optional
+      thisValue - optional 
+    */
+
+    const newWatchList = watchList.slice();
+    let newArray = [];
+    newWatchList.forEach((array) => {
+        return newArray.push({ Title: item.Title.toUpperCase(), rating: item.imdbRating });
+    });
+    console.log(newArray);
 }
 
 
